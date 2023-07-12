@@ -1,0 +1,66 @@
+
+
+CREATE TABLE Clients(
+    idclient INT PRIMARY KEY not null auto_increment,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    numero INT
+);
+
+insert into Clients(idclient, nom, prenom, numero),
+values (1, 'kabore', 'jean', 55210010),
+       (2, 'kongo', 'awa', 76152230),
+       (3, 'joyeuse', 'sarah', 67777370),
+       (4, 'somtore', 'elvis', 75124990 );
+
+CREATE TABLE Fournisseurs(
+    idfournisseurs INT PRIMARY KEY not null auto_increment,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    numero INT,
+);
+
+insert into Fournisseurs(idfournisseurs,nom,prenom,numero),
+values (1, 'nezerwa', 'bertin', 70210000 ),
+       (2, 'hiwa', 'celestin',7215153030),
+       (3, 'uwase', 'sandra', 63717970);
+
+CREATE TABLE Categorie (
+    idcategorieS INT PRIMARY KEY not null ,
+    nom VARCHAR(50),
+);
+
+insert into Categorie(idcategorieS,nom),
+values (1, 'materiels informatique'),
+       (2, 'electronique'),
+       (3, 'electro-menage');
+
+CREATE TABLE articles(
+    idarticle INT PRIMARY KEY NOT null auto_increment,
+    nom VARCHAR(50)
+    prix INT,
+    idcategorie INT,
+    foreign key idcategorie references Categorie 
+);
+ 
+ insert into articles(idcategorie,nom,prix,)
+ values (1,'ordinateur', 250000),
+        (3,'television', 185000),
+        (3,'climatiseur', 475000);
+
+
+CREATE TABLE ventes(
+    idventes INT PRIMARY KEY not null auto_increment,
+    idclient INT,
+    idarticle INT,
+    foreign key(idclient) references Clients (idclient),
+    foreign key(idarticle) references articles (idarticle)
+);
+
+CREATE TABLE Achats(
+    idacahts INT PRIMARY KEY not null auto_increment,
+    idfournisseurs INT,
+    idarticle INT,
+    foreign key(idfournisseurs) references Fournisseurs(idfournisseurs)
+    foreign key(idarticle) references articles(idarticle)
+);
