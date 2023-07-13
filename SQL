@@ -61,6 +61,6 @@ CREATE TABLE Achats(
     idacahts INT PRIMARY KEY not null auto_increment,
     idfournisseurs INT,
     idarticle INT,
-    foreign key(idfournisseurs) references Fournisseurs(idfournisseurs)
+    foreign key(idfournisseurs) references Fournisseurs(idfournisseurs),
     foreign key(idarticle) references articles(idarticle)
 );
